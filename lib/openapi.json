@@ -1,0 +1,265 @@
+{
+  "openapi" : "3.0.3",
+  "info" : {
+    "title" : "Calculator API - OpenAPI 3.0",
+    "description" : "This is a simple calculator API built using AWS CDK",
+    "contact" : {
+      "email" : "jarrod.seccombe@gmail.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "/"
+  } ],
+  "paths" : {
+    "/add" : {
+      "get" : {
+        "summary" : "Add two numbers together",
+        "description" : "Add two numbers together",
+        "operationId" : "add",
+        "parameters" : [ {
+          "name" : "value1",
+          "in" : "query",
+          "description" : "The first number to calculate",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "maximum" : 1,
+            "minimum" : 1,
+            "type" : "integer"
+          }
+        }, {
+          "name" : "value2",
+          "in" : "query",
+          "description" : "The second number to calculate",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "maximum" : 1,
+            "minimum" : 1,
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid input"
+          },
+          "405" : {
+            "description" : "Validation exception"
+          }
+        },
+        "x-amazon-apigateway-integration": {
+            "type": "aws_proxy",
+            "uri" : "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ADD_LAMBDA_ARN}/invocations",
+            "httpMethod": "GET",
+            "responses": {
+                "default": {
+                    "statusCode": "200"
+                }
+            },
+            "passthroughBehavior": "when_no_match"
+        }
+      }
+    },
+    "/subtract" : {
+      "get" : {
+        "summary" : "Subtract two numbers",
+        "description" : "Subtracts value2 from value1",
+        "operationId" : "subtract",
+        "parameters" : [ {
+          "name" : "value1",
+          "in" : "query",
+          "description" : "The first number to calculate",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "maximum" : 1,
+            "minimum" : 1,
+            "type" : "integer"
+          }
+        }, {
+          "name" : "value2",
+          "in" : "query",
+          "description" : "The second number to calculate",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "maximum" : 1,
+            "minimum" : 1,
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid input"
+          },
+          "405" : {
+            "description" : "Validation exception"
+          }
+        },
+        "x-amazon-apigateway-integration": {
+            "type": "aws_proxy",
+            "uri" : "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${SUBTRACT_LAMBDA_ARN}/invocations",
+            "httpMethod": "GET",
+            "responses": {
+                "default": {
+                    "statusCode": "200"
+                }
+            },
+            "passthroughBehavior": "when_no_match"
+        }
+      }
+    },
+    "/multiply" : {
+      "get" : {
+        "summary" : "Multiply two numbers together",
+        "description" : "Multiply two numbers together",
+        "operationId" : "multiply",
+        "parameters" : [ {
+          "name" : "value1",
+          "in" : "query",
+          "description" : "The first number to calculate",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "maximum" : 1,
+            "minimum" : 1,
+            "type" : "integer"
+          }
+        }, {
+          "name" : "value2",
+          "in" : "query",
+          "description" : "The second number to calculate",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "maximum" : 1,
+            "minimum" : 1,
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid input"
+          },
+          "405" : {
+            "description" : "Validation exception"
+          }
+        },
+        "x-amazon-apigateway-integration": {
+            "type": "aws_proxy",
+            "uri" : "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${MULTIPLY_LAMBDA_ARN}/invocations",
+            "httpMethod": "GET",
+            "responses": {
+                "default": {
+                    "statusCode": "200"
+                }
+            },
+            "passthroughBehavior": "when_no_match"
+        }
+      }
+    },
+    "/divide" : {
+      "get" : {
+        "summary" : "Divide two numbers",
+        "description" : "Divides value1 by value2",
+        "operationId" : "divide",
+        "parameters" : [ {
+          "name" : "value1",
+          "in" : "query",
+          "description" : "The first number to calculate",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "maximum" : 1,
+            "minimum" : 1,
+            "type" : "integer"
+          }
+        }, {
+          "name" : "value2",
+          "in" : "query",
+          "description" : "The second number to calculate",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "maximum" : 1,
+            "minimum" : 1,
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid input"
+          },
+          "405" : {
+            "description" : "Validation exception"
+          }
+        },
+        "x-amazon-apigateway-integration": {
+            "type": "aws_proxy",
+            "uri" : "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${DIVIDE_LAMBDA_ARN}/invocations",
+            "httpMethod": "GET",
+            "responses": {
+                "default": {
+                    "statusCode": "200"
+                }
+            },
+            "passthroughBehavior": "when_no_match"
+        }
+      }
+    }
+  },
+  "components" : { }
+}
