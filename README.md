@@ -18,10 +18,10 @@ This project is a very rudimentary calculator API, deployed on AWS, using the AW
 
 The API is expressed as 4 GET endpoints, one for each arithmetic operation. Each endpoint requires 2 query parameters, `value1` and `value2`. For the multiplication, division, and subtraction endpoints, value1 will come first in the "equation" (ie. `value1 / value2`).
 
-Addition: `GET /add?value1=4&value2=5`
-Subtraction: `GET /subtract?value1=4&value2=5`
-Multiplication: `GET /multiply?value1=4&value2=5`
-Division: `GET /divide?value1=4&value2=5`
+* Addition: `GET /add?value1=4&value2=5` 
+* Subtraction: `GET /subtract?value1=4&value2=5` 
+* Multiplication: `GET /multiply?value1=4&value2=5` 
+* Division: `GET /divide?value1=4&value2=5` 
 
 ## Wishlist Items to Add Given More Bandwidth
 
